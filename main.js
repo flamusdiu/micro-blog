@@ -12,7 +12,7 @@ if (cluster.isMaster) {
 	
 	const app = express();
 	
-	PouchDB.defaults({prefix: 'src/'});
+	PouchDB.defaults({prefix: './db/'});
 	
 	app.use('/db',expressPouchDB(PouchDB));
 	
