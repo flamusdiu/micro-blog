@@ -4,8 +4,28 @@
 const cluster = require('cluster');
 const path = require('path');
 
+let pouchdb;
+
 // Code to run if we're in the master process
 if (cluster.isMaster) {	
+	
+	require('./start-electron.js')
+	
+    // Listen for dying workers
+    cluster.on('exit', function (worker) {
+		console.log('Pouchdb closed! Restarting!')
+        pouchdb = cluster.fork();
+
+    });
+	
+	cluster.on('online', (worker) => {
+		console.log('Electron started successfully!')
+	});
+	
+	pouchdb = cluster.fork();
+	
+// Code to run if we're in a worker process
+} else {
 	const PouchDB = require('pouchdb');
 	const express = require('express');
 	const expressPouchDB = require('express-pouchdb');
@@ -14,25 +34,12 @@ if (cluster.isMaster) {
 	
 	PouchDB.defaults({prefix: './db/'});
 	
-	app.use('/db',expressPouchDB(PouchDB));
+	app.use('/',expressPouchDB(PouchDB, {
+		  overrideMode: {
+			include: ['routes/fauxton']
+		  }
+		})
+	);
 	
 	app.listen(3000);
-	
-    // Listen for dying workers
-    cluster.on('exit', function (worker) {
-		console.log('Electron closed! Exiting!')
-        //process.exit();
-
-    });
-	
-	cluster.on('online', (worker) => {
-		console.log('Electron started successfully!')
-	});
-
-	cluster.fork();
-	
-// Code to run if we're in a worker process
-} else {
-    console.log('Worker %d running!', cluster.worker.id);
-	require('./start-electron.js');
 }

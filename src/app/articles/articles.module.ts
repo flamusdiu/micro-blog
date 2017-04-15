@@ -7,6 +7,8 @@ import { ArticleRoutingModule } from './articles-routing.module';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 
+import { PouchdbService } from '../service/pouchdb.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,9 @@ import { ArticleListComponent } from './article-list/article-list.component';
   declarations: [
 	ArticleListComponent,
 	ArticleDetailComponent
+  ],
+  providers: [
+	PouchdbService
   ]
 })
 export class ArticlesModule { }
