@@ -1,0 +1,14 @@
+md-card {
+	width: 33%;
+	margin: 8px;
+	z-index: 2;
+}
+
+md-card:hover {
+	cursor: pointer;
+}
+
+.layout-wrap {
+	width: 50%;
+	max-height: 100vh;
+}

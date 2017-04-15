@@ -1,0 +1,9 @@
+.fill-space {
+	flex: 1 1 auto;
+}
+
+md-toolbar {
+	top: 0;
+	position:fixed; 
+	z-index:4;
+}

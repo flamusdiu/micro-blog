@@ -1,0 +1,33 @@
+<md-sidenav-container class="sidenav-container">
+	<md-sidenav #start
+		class="md-sidenav-left"
+		md-component-id="left"
+		md-is-locked-open="$mdMedia('gt-md')"
+		md-whiteframe="2"
+		opened="true"
+		mode="side">
+	<md-toolbar class="mat-elevation-z2" color="primary">
+		<span>Outline</span>
+	</md-toolbar>
+	<md-nav-list>
+		<a href="#" md-list-item>Item</a>
+		<a href="#" md-list-item>Item</a>
+		<a href="#" md-list-item>Item</a>
+		<a href="#" md-list-item>Item</a>
+		<a href="#" md-list-item>Item</a>
+	</md-nav-list>
+	<p>I am the sidebar</p>
+	</md-sidenav>
+	<div class="content" mat-padding layout-gt-sx="row" layout-xs="row" layout-wrap>
+		<div flex-gt-xs="none" flex-xs="100">
+			<md-card class="mat-elevation-z2" mat-whiteframe="8">
+				<img md-card-image src="{{ article.cover }}">
+				<md-card-header>
+					<span class="md-card-title"> {{ article.title }} </span>
+				</md-card-header>
+				<md-card-content [innerHTML]=" article.article ">
+				</md-card-content>	
+			</md-card>
+		</div>
+	</div>
+</md-sidenav-container>
