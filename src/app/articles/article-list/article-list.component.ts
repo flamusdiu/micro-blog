@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { Article } from '../../models/article';
-import { PouchdbService } from '../../service/pouchdb.service';
+import { ArticleStore } from '../../state/ArticleStore';
 
 
 
@@ -13,19 +13,11 @@ import { PouchdbService } from '../../service/pouchdb.service';
   styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
-  public articles: Observable<Article[]>;
-  public query_err:Boolean = false;
   
-  constructor( private router: Router, private _db: PouchdbService ) {
+  constructor( private router: Router, private articleStore: ArticleStore ) {
   }
 
-  ngOnInit(): void {
-	  this.getAllArticles();
-  }
-  
-  getAllArticles() {
-	  this.articles = this._db.getAllArticles();
-  }
+  ngOnInit(): void { }
 
   goToArticle(article): void {
 	  let articleid = article ? article._id : null;

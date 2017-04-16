@@ -1,5 +1,5 @@
 <div mat-padding layout-gt-sx="column" layout-xs="row" layout-wrap>
-	<div flex-gt-xs="none" flex-xs="100" *ngFor="let article of articles">
+	<div flex-gt-xs="none" flex-xs="100" *ngFor="let article of articleStore.articles() | async">
 			<md-card class="mat-elevation-z2" mat-whiteframe="8" (click)="goToArticle(article)">
 				<img md-card-image src="{{ article.cover }}">
 				<md-card-header>

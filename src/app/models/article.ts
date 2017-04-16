@@ -1,8 +1,13 @@
 export class Article {
-	_id: string;
+	id: string;
 	title: string;
 	description: string;
 	date: string;
-	cover: string;
-	article: string;
+	attachments: object;
+	
+	constructor(props) {
+		Object.keys(props).map((e) => {
+			this[e] = props[e];
+		})
+	}
 }

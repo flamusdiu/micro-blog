@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
 import * as PouchDB from 'pouchdb';
 import * as pouchdbFind from 'pouchdb-find';
 
@@ -6,8 +8,6 @@ import * as pouchdbFind from 'pouchdb-find';
 export class PouchdbService {
 	private _localdb: string = "http://localhost:3000/main" ;
 	private _pouchDb: any;
-	public query: any;
-	public query_err: any;
    
   constructor() {
 	this._pouchDb = new PouchDB(this._localdb);
@@ -37,10 +37,12 @@ export class PouchdbService {
   }
   
   public getAllArticles() {
-	return this._pouchDb.find({
-		selector: { date: { '$gt': null }},
-		sort: [{'date':"asc"}]
-	}).docs;
+	return Observable.fromPromise (this._pouchDb.find({
+			selector: { date: { '$gt': null }},
+			sort: [{'date':"asc"}]
+		}).then ( (res) => {
+			return res.docs;
+		}));
   }
 }
 

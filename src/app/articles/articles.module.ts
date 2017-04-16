@@ -8,6 +8,7 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { ArticleListComponent } from './article-list/article-list.component';
 
 import { PouchdbService } from '../service/pouchdb.service';
+import { ArticleStore } from '../state/ArticleStore';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { PouchdbService } from '../service/pouchdb.service';
 	ArticleDetailComponent
   ],
   providers: [
-	PouchdbService
+	PouchdbService, ArticleStore
   ]
 })
 export class ArticlesModule { }
