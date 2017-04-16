@@ -2,9 +2,13 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-html, body, material-app, md-sidenav-container, .my-content {
+html, body, app-root, md-sidenav-container, .my-content {
   margin: 0;
   width: 100%;
   height: 100%;
   font-family: Roboto,"Helvetica Neue",sans-serif; 
+}
+
+body {
+   margin-top: 12vh;
 }

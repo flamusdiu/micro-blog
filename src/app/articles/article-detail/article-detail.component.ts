@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
+import { ArticleStore } from '../../state/ArticleStore';
+import { Article } from '../../models/article';
 
 @Component({
   selector: 'app-article-detail',
@@ -10,14 +12,17 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ArticleDetailComponent implements OnInit {
 	
-  @Input() article;
+  private article: Article;
 
-  constructor( private route: ActivatedRoute,
-  ) { }
+  constructor( private route: ActivatedRoute, private articleStore: ArticleStore ) { }
 
   ngOnInit(): void {
-	/*this.route.params
-		.switchMap((params: Params) => this.article = this.databaseService.getArticle(params['id']))
-		.subscribe((article) => this.article = article);*/
+	this.route
+		.queryParamMap
+		.map((paramMap => paramMap.get('id') || 'None'))
+		.switchMap((id: string) => this.articleStore.getArticle(id))
+		.subscribe((article: Article) => {
+			this.article = new Article(article);
+		});
 	}
 }

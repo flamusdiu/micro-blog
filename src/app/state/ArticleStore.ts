@@ -14,22 +14,25 @@ export class ArticleStore {
         this._loadInitialData();
     }
 
-    public articles() {
+    public articles(): Observable<Article[]> {
         return this._articles.asObservable();
     }
 
-    private _loadInitialData() {
+    private _loadInitialData(): void {
         this.pouchdbService.getAllArticles()
             .subscribe(
                 res => {
                     let articles = (<Object[]>res).map((article: any) =>
-                        new Article({id:article._id, description:article.description,title: article.title, attachments: article._attachments}));
+                        new Article(article));
 
                     this._articles.next(articles);
                 },
                 err => console.log("Error retrieving Articles")
             );
-
-		console.log(this._articles);
-    }	
+    }
+	
+	public getArticle (id: string) {
+		return this.pouchdbService.getArticle(id)
+			.then((res) => {return res.docs[0] });
+	}
 }

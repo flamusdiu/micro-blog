@@ -16,7 +16,7 @@ export class PouchdbService {
 	this.createIndexes();
   }
   
-  private createIndexes() {
+  private createIndexes(): void {
 	this._pouchDb.createIndex({
 		index: {
 			fields: [ 'keywords' ]
@@ -36,13 +36,19 @@ export class PouchdbService {
 	});
   }
   
-  public getAllArticles() {
+  public getAllArticles(): Observable<any> {
 	return Observable.fromPromise (this._pouchDb.find({
 			selector: { date: { '$gt': null }},
 			sort: [{'date':"asc"}]
 		}).then ( (res) => {
 			return res.docs;
 		}));
+  }
+  
+  public getArticle(id: string): Promise<any> {
+	  return this._pouchDb.find({
+		  selector: {_id: id }
+	  });
   }
 }
 

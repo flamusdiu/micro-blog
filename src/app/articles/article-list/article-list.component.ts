@@ -20,8 +20,6 @@ export class ArticleListComponent implements OnInit {
   ngOnInit(): void { }
 
   goToArticle(article): void {
-	  let articleid = article ? article._id : null;
-	  
-	  this.router.navigate(['/article', articleid]);
+	  this.router.navigate(['/article', article.id]);
   }
 }
