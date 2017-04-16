@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 
-import { Article } from '../../models/article';
 import { ArticleStore } from '../../state/ArticleStore';
 
 

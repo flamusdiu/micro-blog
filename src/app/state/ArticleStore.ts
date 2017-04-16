@@ -32,7 +32,6 @@ export class ArticleStore {
     }
 	
 	public getArticle (id: string) {
-		return this.pouchdbService.getArticle(id)
-			.then((res) => {return res.docs[0] });
+		return this.pouchdbService.getArticle(id);
 	}
 }
