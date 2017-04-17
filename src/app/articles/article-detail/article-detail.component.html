@@ -1,11 +1,11 @@
 <div class="content" mat-padding layout-gt-sx="row" layout-xs="row" layout-wrap>
 	<div flex-gt-xs="none" flex-xs="100">
 		<md-card class="mat-elevation-z2" mat-whiteframe="8">
-			<img md-card-image src="{{ article.getCover() }}">
+			<img md-card-image src="{{ getCover(article) }}">
 			<md-card-header>
 				<span class="md-card-title"> {{ article.title }} </span>
 			</md-card-header>
-			<md-card-content [innerHTML]="article.getText()">
+			<md-card-content [innerHTML]="getText(article)">
 			</md-card-content>	
 		</md-card>
 	</div>

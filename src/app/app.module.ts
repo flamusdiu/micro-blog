@@ -32,9 +32,4 @@ import { PageNotFoundComponent } from './not-found.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  // Diagnostic only: inspect router configuration
-  constructor(router: Router) {
-    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
-  }
-}
+export class AppModule {}

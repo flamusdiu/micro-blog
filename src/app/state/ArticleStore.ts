@@ -27,11 +27,18 @@ export class ArticleStore {
 
                     this._articles.next(articles);
                 },
-                err => console.log("Error retrieving Articles")
+                err => {
+					console.log("Error retrieving Articles")
+					console.log(err)
+				}
             );
     }
 	
 	public getArticle (id: string) {
 		return this.pouchdbService.getArticle(id);
+	}
+	
+	public getArticleAttachment(id: string, attachmentId: string) {
+		return this.pouchdbService.getArticleAttachment(id,attachmentId);
 	}
 }

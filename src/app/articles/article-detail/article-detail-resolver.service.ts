@@ -15,7 +15,7 @@ export class ArticleDetailResolver implements Resolve<Article> {
     
 	return this.articleStore.getArticle(id).then(article => {
       if (article) {
-        return new Article(article);
+        return new Article(article.docs[0]);
       } else { // id not found
         this.router.navigate(['/articles']);
         return null;

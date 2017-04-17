@@ -39,7 +39,7 @@ export class PouchdbService {
   public getAllArticles(): Observable<any> {
 	return Observable.fromPromise (this._pouchDb.find({
 			selector: { date: { '$gt': null }},
-			sort: [{'date':"asc"}]
+			sort: [{date:"asc"}]
 		}).then ( (res) => {
 			return res.docs;
 		}));
@@ -49,6 +49,10 @@ export class PouchdbService {
 	  return this._pouchDb.find({
 		  selector: {_id: id }
 	  });
+  }
+  
+  public getArticleAttachment(id: string, attachmentId: string) {
+	  return this._pouchDb.getAttachment(id, attachmentId);
   }
 }
 

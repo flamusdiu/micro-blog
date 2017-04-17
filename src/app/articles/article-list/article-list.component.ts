@@ -12,12 +12,24 @@ import { ArticleStore } from '../../state/ArticleStore';
 })
 export class ArticleListComponent implements OnInit {
   
-  constructor( private router: Router, private articleStore: ArticleStore ) {
-  }
+	constructor( private router: Router, private articleStore: ArticleStore ) {
+	}
 
-  ngOnInit(): void { }
+	ngOnInit(): void { }
 
-  goToArticle(article): void {
+	goToArticle(article): void {
 	  this.router.navigate(['/article', article.id]);
-  }
+	}
+
+	getCover(article): String {
+		if (article.attachments['cover']) {
+			const content_type = article.attachments['cover']['content_type'];
+			const data = article.attachments['cover']['data'];
+			
+			return "data:" + content_type + ";base64," + data;
+		} else {
+			return "http://loremflickr.com/400/200/technology,telephone/all"
+		}
+	}
+	
 }
