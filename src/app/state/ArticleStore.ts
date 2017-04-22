@@ -31,7 +31,11 @@ export class ArticleStore {
             );
     }
 	
-	public getArticle (id: string) {
+	public getArticle (id: string): Promise<any> {
 		return this.pouchdbService.getArticle(id);
+	}
+	
+	public getAttachment(id: string, attachment: string): Promise<any>{
+		return this.pouchdbService.getAttachment(id,attachment);
 	}
 }

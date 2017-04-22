@@ -15,7 +15,20 @@ export class ArticleDetailResolver implements Resolve<Article> {
     
 	return this.articleStore.getArticle(id).then(article => {
       if (article) {
-        return new Article(article);
+        let new_article = new Article(article);
+		
+		Promise.all(Object.keys(new_article['attachments']).map((at) => {
+				return this.articleStore.getAttachment(new_article['id'],at).then ((res) => {
+					new_article.attachments[at]['data'] = res.toString();
+				});
+		})).then(() =>  {		
+			if (new_article['attachments'].hasOwnProperty('toc')) {
+				new_article.toc = new_article['attachments']['toc']['data'];
+			}
+		})
+		
+		return new_article;
+		
       } else { // id not found
         this.router.navigate(['/articles']);
         return null;

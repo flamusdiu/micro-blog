@@ -4,7 +4,8 @@ import {
 	MdToolbarModule,
 	MdCardModule,
 	MdInputModule,
-	MdIconModule
+	MdIconModule,
+	MdSidenavModule
 } from '@angular/material';
 
 @NgModule({
@@ -13,14 +14,16 @@ import {
 	MdToolbarModule,
 	MdCardModule,
 	MdIconModule,
-	MdInputModule
+	MdInputModule,
+	MdSidenavModule
   ],
   declarations: [],
   exports: [
 	MdInputModule, 
 	MdCardModule, 
 	MdToolbarModule,
-	MdIconModule
+	MdIconModule,
+	MdSidenavModule
   ]
 })
 export class AppMaterialModule { }

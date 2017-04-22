@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+import { ActivatedRoute }   from '@angular/router';
 
 import { Article } from '../../models/article';
+import { InterModuleService } from '../../service/inter-module.service';
 
 @Component({
   selector: 'app-article-detail',
@@ -11,14 +11,23 @@ import { Article } from '../../models/article';
 })
 export class ArticleDetailComponent implements OnInit {
 	
-  private article: any;
+  private article: Article;
 
-  constructor( private route: ActivatedRoute ) { }
+  constructor( private route: ActivatedRoute, private interModuleService: InterModuleService ) { }
 
   ngOnInit(): void {
 	this.route.data
 		.subscribe((data: { article: Article } ) => {
-			this.article = data.article;
-		})
+			this.interModuleService.articleSubject.next(data.article);
+		});
+		
+    this.interModuleService.article.take(1)
+		.subscribe((data) => {
+			this.article = data;
+			console.log(this.article);
+			console.log(this.article.attachments['toc']);
+			console.log(this.article.attachments['toc']['data']);
+			this.interModuleService.sidenavToc.nativeElement['innerHTML'] = data.toc;
+		});
   }
 }

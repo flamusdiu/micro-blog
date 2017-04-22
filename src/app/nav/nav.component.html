@@ -1,8 +1,14 @@
 <md-toolbar class="mat-elevation-z4" color="primary">
+	<button md-icon-button class="mat-button app-button-menu" *ngIf="!changeMenuIcon">
+	   <md-icon class="app-toolbar-menu">menu</md-icon>
+	</button>
+	<button md-icon-button class="app-button-menu" *ngIf="changeMenuIcon" (click)="goToArticles()">
+	   <md-icon class="app-toolbar-menu">arrow_back</md-icon>
+	</button>
 	<span>Microblog </span>
 	<span class="fill-space"></span>
+	<md-icon>search</md-icon>
 	<md-input-container md-no-float class="mat-accent" flex="50" style="padding-bottom:0px;margin-left:25px">
 		<input mdInput placeholder="Search here" style="padding-left:25px;margin-left:5px">
-		<md-icon class="material-icons" md-prefix>&#xE8B6;</md-icon>
 	</md-input-container>
 </md-toolbar>

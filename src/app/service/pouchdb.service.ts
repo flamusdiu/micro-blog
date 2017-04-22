@@ -50,5 +50,9 @@ export class PouchdbService {
 		  selector: {_id: id }
 	  });
   }
+  
+  public getAttachment (id: string, attachment: string): Promise<any> {
+	  return this._pouchDb.getAttachment(id,attachment);
+  }
 }
 

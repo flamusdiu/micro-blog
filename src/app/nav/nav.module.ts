@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppMaterialModule  } from '../app-material';
 
-import  { NavComponent } from './nav.component';
+import { NavComponent } from './nav.component';
 
 @NgModule({
   imports: [
     CommonModule,
-	AppMaterialModule
+	AppMaterialModule,
   ],
   declarations: [
 	NavComponent

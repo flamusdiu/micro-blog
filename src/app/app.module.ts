@@ -9,8 +9,11 @@ import { Router } from '@angular/router';
 import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AppMaterialModule } from './app-material';
 import { ArticlesModule } from './articles';
 import { NavModule } from './nav';
+
+import { InterModuleService } from './service/inter-module.service'
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './not-found.component';
@@ -25,16 +28,12 @@ import { PageNotFoundComponent } from './not-found.component';
     FormsModule,
     HttpModule,
 	BrowserAnimationsModule,
+	AppMaterialModule,
 	ArticlesModule,
 	NavModule,
 	AppRoutingModule
   ],
-  providers: [],
+  providers: [InterModuleService],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  // Diagnostic only: inspect router configuration
-  constructor(router: Router) {
-    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
-  }
-}
+export class AppModule {}
