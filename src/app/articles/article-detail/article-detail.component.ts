@@ -18,7 +18,7 @@ export class ArticleDetailComponent implements OnInit {
   ngOnInit(): void {
 	this.route.data
 		.subscribe((data: { article: Article } ) => {
-			this.interModuleService.articleSubject.next(data.article);
+			this.interModuleService.addArticle(data.article);
 		});
 		
     this.interModuleService.article.take(1)

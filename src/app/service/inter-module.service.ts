@@ -7,9 +7,13 @@ import { Article } from '../models/article';
 
 @Injectable ()
 export class InterModuleService {
-	public articleSubject: BehaviorSubject<Article> = new BehaviorSubject<Article>(null);
-	public article: Observable<Article>  = this.articleSubject.asObservable();
+	private _article: BehaviorSubject<Article> = new BehaviorSubject<Article>(null);
+	public article: Observable<Article>  = this._article.asObservable();
   
 	public sidenav: MdSidenav;
 	public sidenavToc: ElementRef;
+	
+	public addArticle(article: Article){
+		this._article.next(article);
+	}
 }
