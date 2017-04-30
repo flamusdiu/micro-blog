@@ -9,7 +9,7 @@ export class Article {
 
 	constructor(props: Array<String>) {
 		if (props.hasOwnProperty('docs')) props = props['docs'][0];
-		
+    
 		Object.keys(props).map((e) => {
 			if(e.startsWith('_')) {
 				let e_new = e.substr(1)

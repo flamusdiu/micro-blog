@@ -39,7 +39,7 @@ export class PouchdbService {
   public getAllArticles(): Observable<any> {
 	return Observable.fromPromise (this._pouchDb.find({
 			selector: { date: { '$gt': null }},
-			sort: [{'date':"asc"}]
+			sort: [{date:"asc"}]
 		}).then ( (res) => {
 			return res.docs;
 		}));

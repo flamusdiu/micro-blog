@@ -4,6 +4,7 @@ import { ActivatedRoute }   from '@angular/router';
 import { MarkdownService } from 'angular2-markdown';
 
 import { Article } from '../../models/article';
+import { ArticleStore } from '../../state/ArticleStore';
 
 import { ArticleStore } from '../../state/ArticleStore';
 import { InterModuleService } from '../../service/inter-module.service';
@@ -22,7 +23,7 @@ export class ArticleDetailComponent implements OnInit {
 
   constructor( private route: ActivatedRoute, 
 			   private articleStore: ArticleStore,
-		       private interModuleService: InterModuleService,
+		     private interModuleService: InterModuleService,
 			   private mdService: MarkdownService ) { }
 
   ngOnInit(): void {
@@ -50,4 +51,21 @@ export class ArticleDetailComponent implements OnInit {
 			this.interModuleService.article.complete();
 		});
   }
+  
+  getCover(): String {
+		if (this.article.attachments['cover']) {
+			const content_type = this.article.attachments['cover']['content_type'];
+			const data = this.article.attachments['cover']['data'];
+			
+			return "data:" + content_type + ";base64," + data;
+		} else {
+			return "http://loremflickr.com/400/200/technology,telephone/all"
+		}
+	}
+	
+	getText(): Promise<String> {		
+		return this.articleStore.getArticleAttachment(this.article.id,'index.md').then((doc) => {
+			return doc.toString();
+		});
+	}
 }

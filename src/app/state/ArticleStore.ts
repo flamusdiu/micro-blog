@@ -27,7 +27,10 @@ export class ArticleStore {
 
                     this._articles.next(articles);
                 },
-                err => console.log("Error retrieving Articles")
+                err => {
+					console.log("Error retrieving Articles")
+					console.log(err)
+				}
             );
     }
 	
