@@ -1,0 +1,33 @@
+@import '../../custom-theme.scss';
+
+md-toolbar {
+	top: 0;
+	position:fixed; 
+	z-index:4;
+
+	.app-toolbar-menu {
+	  padding: 0 14px 0 14px;
+	  color: white;
+	}
+
+	.app-button-menu {
+	  box-shadow: none;
+	  user-select: none;
+	  background: none;
+	  border: none;
+	  cursor: pointer;
+	  filter: none;
+	  font-weight: normal;
+	  height: auto;
+	  line-height: inherit;
+	  margin: 0;
+	  min-width: 0;
+	  padding: 0;
+	  text-align: left;
+	  text-decoration: none;
+	}
+	
+	.fill-space {
+		flex: 1 1 auto;
+	}
+}

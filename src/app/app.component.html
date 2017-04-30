@@ -1,2 +1,9 @@
 <nav></nav>
-<router-outlet></router-outlet>
+<md-sidenav-container>
+	<div class='app-content'>
+		<router-outlet></router-outlet>
+	</div>
+		<md-sidenav mode="side" opened="false" #sidenav>
+			<div class="sidenav-toc" #sidenavToc></div>
+		</md-sidenav>
+</md-sidenav-container>

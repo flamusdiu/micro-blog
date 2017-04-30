@@ -1,0 +1,27 @@
+@import '~@angular/material/theming';
+
+$primary: mat-palette($mat-indigo, 800);
+$accent:  mat-palette($mat-light-blue, 600, A100, A400);
+$warn:    mat-palette($mat-red, 600);
+$theme:   mat-light-theme($primary, $accent, $warn);
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+$rem-base:                10px; // Desired base REM unit in pixels
+$rem-percentage:          percentage(( strip-unit($rem-base) / 16)); // Percentage to set html font-size to match rem-base.
+
+$font-size-body:          1.4rem; // ~14px, our ideal font size.
+
+$font-size-base:          1em; // ~14px
+$font-size-large:         1.5em; // ~20px
+$font-size-medium:		  1.2em; 
+$font-size-small:         0.85em; // ~12px

@@ -51,8 +51,8 @@ export class PouchdbService {
 	  });
   }
   
-  public getArticleAttachment(id: string, attachmentId: string) {
-	  return this._pouchDb.getAttachment(id, attachmentId);
+  public getAttachment (id: string, attachment: string): Promise<any> {
+	  return this._pouchDb.getAttachment(id,attachment);
   }
 }
 

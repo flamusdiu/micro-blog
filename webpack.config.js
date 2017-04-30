@@ -45,7 +45,9 @@ module.exports = {
       "./src/polyfills.ts"
     ],
     "styles": [
-      "./src/styles.scss"
+      "./src/styles.scss",
+	  "./src/custom-theme.scss",
+	  "./node_modules/prismjs/themes/prism-okaidia.css"
     ]
   },
   "output": {

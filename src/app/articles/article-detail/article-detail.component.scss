@@ -1,0 +1,54 @@
+@import '../../../custom-theme.scss';
+
+md-card {
+	padding: 0px;
+	margin: 20px;
+		
+	.cover-wrapper {
+		width: 100%;
+		height: 160px;
+		
+		.cover-image {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+		}
+	}
+	
+	.cover-footer {
+		background-color: rgba(255, 255, 255, 0.5);
+		margin: -50px 0px 0px 0px;
+		padding: 10px;
+		
+		div[md-card-title] {
+			font-weight: bold;
+			width: 100%;
+			font-size: $font-size-large;
+		}
+	}
+	
+	#markdown {
+		padding: 24px;
+		font-size: 1em;
+		font-weight: normal;
+		
+		h1 {
+			font-weight: bold;
+			text-align: center;
+			font-size: 1.5em;
+		}
+		
+		h2 {
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+		
+		h3 {
+			font-weight: bold;
+			text-decoration: italic;
+			font-size: 1em;
+		}	
+	}
+}

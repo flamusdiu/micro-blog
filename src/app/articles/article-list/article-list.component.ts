@@ -8,7 +8,7 @@ import { ArticleStore } from '../../state/ArticleStore';
 @Component({
   selector: 'app-articles-list',
   templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.css']
+  styleUrls: ['./article-list.component.scss']
 })
 export class ArticleListComponent implements OnInit {
   
