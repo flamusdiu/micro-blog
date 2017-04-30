@@ -6,7 +6,6 @@ export class Article {
 	author: string;
 	rev: string;
 	attachments: object;
-	private _toc: any;
 
 	constructor(props: Array<String>) {
 		if (props.hasOwnProperty('docs')) props = props['docs'][0];
@@ -21,18 +20,18 @@ export class Article {
 		})
 	}
 	
-	get cover(): String {
+	get cover(): string {
 		if (this.attachments['cover']) {
 			const content_type = this.attachments['cover']['content_type'];
 			const data = this.attachments['cover']['data'];
 			
 			return "data:" + content_type + ";base64," + data;
 		} else {
-			return "http://loremflickr.com/400/200/technology,telephone/all"
+			return "../src/assets/images/place-holder-large.png"
 		}
 	}
 	
-	get text(): String {
+	get text() {
 		if (this.attachments['index.md'])  {
 			return this.attachments['index.md']['data'];
 		} else {
@@ -40,15 +39,11 @@ export class Article {
 		}
 	}
 	
-	set toc(txt) {
-		if ( txt instanceof Object && txt.hasOwnProperty('data')) {
-			this._toc = txt.data;
-		} else {
-			this._toc = txt;
-		}
-	}
-	
 	get toc() {
-		return this._toc;
+		if (this.attachments['toc'])  {
+			return this.attachments['toc']['data'];
+		} else {
+			return null;
+		}
 	}
 }

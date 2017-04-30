@@ -1,12 +1,9 @@
+<nav></nav>
 <md-sidenav-container>
-	<md-sidenav mode="side" opened="false" #sidenav>
-		<div class="mat-elevation-z4 sidenav-title" >
-			Table of Content
-		</div>
-		<div class="sidenav-toc" #sidenavToc></div>
-	</md-sidenav>
-	<nav></nav>
 	<div class='app-content'>
 		<router-outlet></router-outlet>
 	</div>
+		<md-sidenav mode="side" opened="false" #sidenav>
+			<div class="sidenav-toc" #sidenavToc></div>
+		</md-sidenav>
 </md-sidenav-container>

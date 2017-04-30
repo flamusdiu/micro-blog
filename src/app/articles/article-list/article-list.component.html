@@ -1,11 +1,13 @@
 <div class="main" mat-padding fxLayout="row" fxLayoutWrap="no-wrap" fxLayoutAlign="center start" fxLayoutGap="15px">
 	<md-card class="mat-elevation-z2" mat-whiteframe="8" (click)="goToArticle(article)" *ngFor="let article of articleStore.articles() | async">
-		<img md-card-image src="{{ article.cover }}">
-		<md-card-title fxFlex>
-			<span>{{ article.title }}</span>
-		</md-card-title>
+		<div class="cover-wrapper">
+			<div class="cover-image" [style.background-image]="'url(' + article.cover + ')' | safeStyle"></div>
+		</div>
+		<div class="cover-footer">
+			<div md-card-title fxFlex>{{ article.title }}</div>
+		</div>
 		<md-card-content>
-			<p>{{ article.description }}</p>
+			{{ article.description }}
 		</md-card-content>	
 	</md-card>
 </div>

@@ -1,22 +1,21 @@
 import { ElementRef,
-		 AfterViewInit, 
-		 Component, 
+		 AfterViewInit,
+		 Component,
 		 ViewChild } from '@angular/core';
 import { MdSidenav } from '@angular/material';
 
-import { InterModuleService } from './service/inter-module.service';
-import { Article } from './models/article';
+import { InterModuleService } from './service/inter-module.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {  
+export class AppComponent implements AfterViewInit {
   @ViewChild('sidenav') public sidenav: MdSidenav;
   @ViewChild('sidenavToc') public sidenavToc: ElementRef;
   
-  constructor(public interModuleService: InterModuleService) {
+  constructor(private interModuleService: InterModuleService) {
   }
   
   ngAfterViewInit() {

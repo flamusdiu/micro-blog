@@ -1,18 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { MdSidenav } from '@angular/material';
 
 import { InterModuleService } from '../service/inter-module.service'
 
 @Component({
   selector: 'nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit {  
   private changeMenuIcon: boolean = false;
   
-  constructor(private router: Router, public interModuleService: InterModuleService) {
+  constructor(private router: Router, private interModuleService: InterModuleService) {
   }
   
 

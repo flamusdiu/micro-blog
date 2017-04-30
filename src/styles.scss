@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '~@angular/material/theming';
 
-@include mat-core();
-$primary: mat-palette($mat-indigo, 800);
-$accent:  mat-palette($mat-light-blue, 600, A100, A400);
-$warn:    mat-palette($mat-red, 600);
-$theme: mat-light-theme($primary, $accent, $warn);
-@include angular-material-theme($theme);
+@include  mat-core();
+@import './custom-theme.scss';
+@include  angular-material-theme($theme);
+
+html { font-size: $rem-percentage; }
+body { font-size: $font-size-body; }
 
 html, body, app-root, md-sidenav-container {
   width: 100%;
@@ -25,15 +25,6 @@ md-sidenav-container {
 	md-sidenav {
 		width: 250px;
 		height: 100%;
-		padding: 0px;
-	
-		.sidenav-title {
-			background-color: mat-color($primary, lighter);
-			line-height: 64px;
-			text-indent: 20px;
-			color: mat-color($primary);
-			font-weight: bold;
-			font-size: 16px;
-		}
+		padding: 80px 10px 0px 10px;
 	}
 }
