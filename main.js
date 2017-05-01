@@ -45,9 +45,7 @@ function start_pouchdb() {
 		
 		const app = express();
 		
-		PouchDB.defaults({prefix: './db/'});
-		
-		app.use('/',expressPouchDB(PouchDB, {
+		app.use('/',expressPouchDB(PouchDB.defaults({prefix: '.db/'}), {
 			  overrideMode: {
 				include: ['routes/fauxton']
 			  }
