@@ -9,6 +9,9 @@
 # dependencies
 /node_modules
 
+# database files
+.db/*
+
 # IDEs and editors
 /.idea
 .project
