@@ -7,7 +7,7 @@
 /app-builds
 
 # dependencies
-/node_modules
+/**/node_modules
 
 # database files
 .db/*
