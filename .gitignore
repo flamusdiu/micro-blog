@@ -12,6 +12,9 @@
 # database files
 .db/*
 
+# folder for document conversion
+src/docs/*
+
 # IDEs and editors
 /.idea
 .project
