@@ -46,6 +46,7 @@
     "angular2-markdown": "^1.6.0",
     "bluebird": "^3.5.0",
     "cluster": "^0.7.7",
+    "convert": "file:.\\bin\\convert",
     "core-js": "~2.4.1",
     "express": "^4.15.2",
     "express-pouchdb": "^2.3.6",
